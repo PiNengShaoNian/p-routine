@@ -1,6 +1,7 @@
-#ifndef P_ROUTINE_COROUTINE_H
-#define P_ROUTINE_COROUTINE_H
+#ifndef P_ROUTINE_H
+#define P_ROUTINE_H
 
+// coroutine.c
 #define TASK_SIZE 32
 
 // 协程的栈大小4k
@@ -34,4 +35,12 @@ int coroutine_create(int *pid, coroutine_func_t entry, char *name, int priority)
 
 void coroutine_exit();
 
-#endif // P_ROUTINE_COROUTINE_H
+// timer.c
+void init_timer();
+void start_timer();
+
+// sched.c
+void sched();
+void do_timer();
+
+#endif // P_ROUTINE_H

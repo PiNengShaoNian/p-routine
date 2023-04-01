@@ -1,7 +1,6 @@
 #include <signal.h>
 #include "common.h"
-#include "coroutine.h"
-#include "sched.h"
+#include "proutine.h"
 
 static void *coroutine_idle(void *arg)
 {

@@ -1,7 +1,5 @@
 #include "common.h"
-#include "coroutine.h"
-#include "sched.h"
-#include "timer.h"
+#include "proutine.h"
 
 extern void init_idle();
 

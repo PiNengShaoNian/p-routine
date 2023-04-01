@@ -1,6 +1,5 @@
 #include "common.h"
-#include "coroutine.h"
-#include "sched.h"
+#include "proutine.h"
 
 coroutine_t *coroutines[TASK_SIZE] = {0};
 
