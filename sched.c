@@ -12,12 +12,19 @@ static coroutine_t *find_ready_coroutine()
         if (coroutines[i] != NULL && coroutines[i]->state == COROUTINE_READY)
             return coroutines[i];
 
+    for (int i = 0; i < TASK_SIZE; ++i)
+        if (coroutines[i] != NULL && coroutines[i]->state == COROUTINE_SLEEPING)
+            return coroutines[i];
+
     return NULL;
 }
 
 void sched()
 {
     coroutine_t *ready_coroutine;
+
+    if (current_coroutine != NULL)
+        current_coroutine->state = COROUTINE_SLEEPING;
 
     ready_coroutine = find_ready_coroutine();
 

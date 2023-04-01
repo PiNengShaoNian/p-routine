@@ -63,9 +63,7 @@ void coroutine_exit()
     for (int i = 0; i < TASK_SIZE; ++i)
     {
         coroutine_t *tmp = coroutines[i];
-        if (tmp == NULL)
-            continue;
-        if (tmp->state != COROUTINE_RUNNING)
+        if (tmp == NULL || tmp != current_coroutine)
             continue;
 
         coroutines[i] = NULL;

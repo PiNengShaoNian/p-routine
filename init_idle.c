@@ -1,9 +1,7 @@
+#include <signal.h>
 #include "common.h"
 #include "coroutine.h"
-
-#include <signal.h>
-
-extern coroutine_t *coroutines[TASK_SIZE];
+#include "sched.h"
 
 static void *coroutine_idle(void *arg)
 {
@@ -14,7 +12,7 @@ static void *coroutine_idle(void *arg)
     }
 }
 
-void init()
+void init_idle()
 {
     coroutine_create(NULL, coroutine_idle, "idle");
 }

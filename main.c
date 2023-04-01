@@ -1,8 +1,9 @@
-#include <stdio.h>
+#include "common.h"
 #include "coroutine.h"
 #include "sched.h"
+#include "timer.h"
 
-extern void init();
+extern void init_idle();
 
 void *coroutine_fun(void *arg)
 {
@@ -15,12 +16,17 @@ void *coroutine_fun(void *arg)
 
 int main()
 {
-    // coroutine_create(NULL, coroutine_fun, "c1");
-    // coroutine_create(NULL, coroutine_fun, "c2");
+    init_timer();
+    init_idle();
 
-    init();
+    coroutine_create(NULL, coroutine_fun, "c1");
+    coroutine_create(NULL, coroutine_fun, "c2");
 
-    sched();
+    // 等待1s,让模拟时钟中断的线程启动完毕
+    sleep(1);
+    start_timer();
+
+    getchar();
 
     return 0;
 }
