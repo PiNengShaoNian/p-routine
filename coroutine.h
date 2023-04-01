@@ -26,9 +26,11 @@ typedef struct coroutine
     char *esp3;
     char name[16]; // 协程名称
     int id;        // 协程id
+    int priority;  // 调度优先级，越大越先调度，获得的时间片越多
+    int counter;   // 运行时间片
 } coroutine_t;
 
-int coroutine_create(int *pid, coroutine_func_t entry, char *name);
+int coroutine_create(int *pid, coroutine_func_t entry, char *name, int priority);
 
 void coroutine_exit();
 

@@ -3,4 +3,6 @@
 
 void sched();
 
+void do_timer();
+
 #endif // P_COROUTINE_SCHED_H

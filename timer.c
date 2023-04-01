@@ -19,7 +19,7 @@ static void sig_handler(int sig)
         sigaddset(&sigset, SIGUSR1);
         sigprocmask(SIG_UNBLOCK, &sigset, NULL);
 
-        sched();
+        do_timer();
         break;
     default:
         ERROR_PRINT("signals not registered for processing\n");

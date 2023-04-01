@@ -14,5 +14,5 @@ static void *coroutine_idle(void *arg)
 
 void init_idle()
 {
-    coroutine_create(NULL, coroutine_idle, "idle");
+    coroutine_create(NULL, coroutine_idle, "idle", 1);
 }

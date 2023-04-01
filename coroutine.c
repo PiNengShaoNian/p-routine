@@ -17,7 +17,7 @@ static int find_free_id()
     return -1;
 }
 
-int coroutine_create(int *pid, coroutine_func_t entry, char *name)
+int coroutine_create(int *pid, coroutine_func_t entry, char *name, int priority)
 {
     int id;
     coroutine_t *coroutine;
@@ -39,6 +39,7 @@ int coroutine_create(int *pid, coroutine_func_t entry, char *name)
     coroutine->state = COROUTINE_INIT;
     coroutine->id = id;
     coroutine->fun = entry;
+    coroutine->priority = coroutine->counter = priority;
     coroutine->esp3 = malloc(C_STACK_SIZE) + C_STACK_SIZE;
 
     memcpy(coroutine->name, name, strlen(name));
