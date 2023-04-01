@@ -37,6 +37,6 @@ void sched()
             "pop %%rsp;"           // 恢复rsp
             "callq %%rbx;"         // coroutine_exit()
             "" ::"a"(ready_coroutine->fun),
-            "c"(ready_coroutine->esp3 - 8), "b"(coroutine_exit)
+            "c"(ready_coroutine->esp3 - 8), "D"(current_coroutine), "b"(coroutine_exit)
             : "memory");
 }

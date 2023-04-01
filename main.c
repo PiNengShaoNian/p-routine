@@ -4,9 +4,10 @@
 
 void *coroutine_fun_1(void *arg)
 {
+    coroutine_t *self = (coroutine_t *)arg;
     for (int i = 0; i < 10; ++i)
     {
-        printf("#1 %d\n", i);
+        printf("%s %d\n", self->name, i);
     }
 }
 
