@@ -2,7 +2,9 @@
 #include "coroutine.h"
 #include "sched.h"
 
-void *coroutine_fun_1(void *arg)
+extern void init();
+
+void *coroutine_fun(void *arg)
 {
     coroutine_t *self = (coroutine_t *)arg;
     for (int i = 0; i < 10; ++i)
@@ -13,7 +15,10 @@ void *coroutine_fun_1(void *arg)
 
 int main()
 {
-    coroutine_create(NULL, coroutine_fun_1, "c1");
+    // coroutine_create(NULL, coroutine_fun, "c1");
+    // coroutine_create(NULL, coroutine_fun, "c2");
+
+    init();
 
     sched();
 
